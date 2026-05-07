@@ -1,0 +1,59 @@
+/* 1. RESET: Remove estilos chatos que o navegador coloca sozinho */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 2. CORPO DO SITE: Define a cor de fundo e alinhamento */
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 3. CARD PRINCIPAL: Para o conteúdo não ficar espalhado */
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    text-align: center;
+}
+
+/* 4. TIPOGRAFIA */
+h1 {
+    color: #1a84e8;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* 5. BOTÃO ESTILIZADO: Com efeito de passar o mouse (hover) */
+.botao {
+    display: inline-block;
+    background-color: #1a73e8;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: #1557b0;
+    transform: scale(1.05); /* Dá um leve aumento ao passar o mouse */
+}
