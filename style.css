@@ -42,7 +42,7 @@ p {
 /* 5. BOTÃO ESTILIZADO: Com efeito de passar o mouse (hover) */
 .botao {
     display: inline-block;
-    background-color: #1a73e8;
+    background-color: #26c2d6;
     color: white;
     padding: 12px 24px;
     text-decoration: none;
@@ -54,6 +54,6 @@ p {
 }
 
 .botao:hover {
-    background-color: #1557b0;
+    background-color: #279c7f;
     transform: scale(1.05); /* Dá um leve aumento ao passar o mouse */
 }
