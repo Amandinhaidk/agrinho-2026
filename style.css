@@ -58,28 +58,84 @@ p {
     transform: scale(1.05); /* Dá um leve aumento ao passar o mouse */
 }
 
-/* Cor padrão do botão de três pontinhos */
-#btnMenuPontinhos {
+/* Ícone das Três Barrinhas */
+.menu-icone {
+    font-size: 30px;
     background: none;
     border: none;
-    font-size: 24px;
     cursor: pointer;
     padding: 10px;
-    color: #333; /* Cor padrão: grafite */
-    transition: color 0.3s ease; /* Efeito suave ao mudar de cor */
+    color: #4496c5; /* Verde mate */
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 100;
 }
 
-/* Cor do botão quando a aba estiver aberta */
-#btnMenuPontinhos.aberto {
-    color: #3a6bb4; 
+/* Painel Lateral */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Começa escondido à esquerda */
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+    z-index: 101;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* Estilo da caixinha de características */
-#abaCaracteristicas {
-    display: none; /* Começa escondida */
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-    border-left: 4px solid #3a6bb4;
+/* Quando o menu ganha a classe aberto, ele desliza para a tela */
+.menu-lateral.aberto {
+    left: 0;
+}
+
+/* Botão de fechar (X) */
+.btn-fechar {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    float: right;
+    color: #888;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.menu-lateral ul li {
+    margin: 20px 0;
+}
+
+.menu-lateral ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    display: block;
+}
+
+.menu-lateral ul li a:hover {
+    color: #4496c5;
+}
+
+/* Máscara de fundo */
+.mascara-fundo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+}
+
+.mascara-fundo.aberto {
+    display: block;
 }
