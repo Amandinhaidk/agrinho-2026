@@ -71,7 +71,7 @@ p {
 
 /* Cor do botão quando a aba estiver aberta */
 #btnMenuPontinhos.aberto {
-    color: #a4c1ee; 
+    color: #3a6bb4; 
 }
 
 /* Estilo da caixinha de características */
@@ -81,5 +81,5 @@ p {
     padding: 15px;
     border-radius: 8px;
     margin-top: 15px;
-    border-left: 4px solid #a4c1ee;
+    border-left: 4px solid #3a6bb4;
 }
