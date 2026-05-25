@@ -62,6 +62,46 @@
             "Porque preserva a floresta nativa, protege a biodiversidade e mantém a qualidade do solo."
         ],
         correta: 2
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "A erva-mate é famosa por ser uma excelente fonte de energia. Qual é o principal composto estimulante presente nas suas folhas?",
+        opcoes: [
+            "Cafeína",
+            "Taurina",
+            "Ginseng"
+        ],
+        correta: 0
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "Como se chama a infusão de erva-mate preparada especificamente com água fria ou sumo de fruta, muito popular no Paraguai e no Brasil?",
+        opcoes: [
+            "Chimarrão",
+            "Tereré",
+            "Matcha"
+        ],
+        correta: 1
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "Qual é o nome do utensílio (uma espécie de palhinha de metal) utilizado para filtrar e beber a infusão diretamente do recipiente?",
+        opcoes: [
+            "Cabaça",
+            "Filtro",
+            "Bomba"
+        ],
+        correta: 1
+    },
+     {
+        categoria: "Conhecimento Geral",
+        pergunta: "Em qual das seguintes regiões a erva-mate NÃO é considerada uma bebida tradicional e diária de grande parte da população?",
+        opcoes: [
+            "Sul do Brasil",
+            "Colômbia",
+            "Argentina"
+        ],
+        correta: 1
     }
 ];
 
