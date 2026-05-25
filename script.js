@@ -1,6 +1,8 @@
 // 1. BANCO DE DADOS DO QUIZ (Array de Objetos)
-const perguntasQuiz = [
+  const perguntasQuiz = [
+    // --- CATEGORIA: SOBRE O PROJETO ---
     {
+        categoria: "Sobre o Projeto",
         pergunta: "Qual é o principal benefício ambiental do projeto Carbon Matte na cultura da erva-mate?",
         opcoes: [
             "Aumentar o uso de tratores poluentes.",
@@ -10,6 +12,7 @@ const perguntasQuiz = [
         correta: 1
     },
     {
+        categoria: "Sobre o Projeto",
         pergunta: "Qual doce misterioso foi criado pelos alunos para gerar memórias afetivas com a erva-mate?",
         opcoes: [
             "Bolo de fubá com cobertura de mate.",
@@ -19,6 +22,7 @@ const perguntasQuiz = [
         correta: 2
     },
     {
+        categoria: "Sobre o Projeto",
         pergunta: "Para que serve o QR Code instalado diretamente nas árvores de erva-mate?",
         opcoes: [
             "Para acessar redes sociais dos produtores.",
@@ -27,16 +31,40 @@ const perguntasQuiz = [
         ],
         correta: 1
     },
+
+    // --- CATEGORIA: CONHECIMENTO GERAL ---
     {
+        categoria: "Conhecimento Geral",
         pergunta: "Quem foram os primeiros povos a descobrir e utilizar as folhas da erva-mate para o consumo?",
         opcoes: [
-            "Os Colonizadores europeus quando chegaram ao Paraná.",
-            "Os povos indígenas.",
-            "Os imigrantes que fundaram as primeiras ervateiras"
+            "Os colonizadores europeus quando chegaram ao Paraná.",
+            "Os povos indígenas (principalmente os Guarani e Caingangue).",
+            "Os imigrantes que fundaram as primeiras ervateiras."
+        ],
+        correta: 1
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "Cientificamente, qual é o nome da árvore que dá origem à erva-mate?",
+        opcoes: [
+            "Ilex paraguariensis",
+            "Araucaria angustifolia",
+            "Mateus paranaenses"
+        ],
+        correta: 0
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "Por que o cultivo da erva-mate sombreada (dentro da mata nativa) é considerado mais sustentável?",
+        opcoes: [
+            "Porque exige a derrubada de outras árvores para o sol entrar.",
+            "Idêntico ao cultivo tradicional no sol, sem diferenças ecológicas.",
+            "Porque preserva a floresta nativa, protege a biodiversidade e mantém a qualidade do solo."
         ],
         correta: 2
     }
 ];
+
 
 // Variáveis de controle do jogo
 let indicePerguntaAtual = 0;
