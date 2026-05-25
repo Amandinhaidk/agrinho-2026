@@ -26,7 +26,16 @@ const perguntasQuiz = [
             "Para conectar o celular à internet da fazenda."
         ],
         correta: 1
-    }
+    },
+    {
+        pergunta: "Quem foram os primeiros povos a descobrir e utilizar as folhas da erva-mate para o consumo?",
+        opcoes: [
+            "Os Colonizadores europeus quando chegaram ao Paraná.",
+            "Os povos indígenas.",
+            "Os imigrantes que fundaram as primeiras ervateiras"
+        ],
+        correta: 2
+    },
 ];
 
 // Variáveis de controle do jogo
