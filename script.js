@@ -141,8 +141,8 @@ function renderizarPergunta() {
         tagCategoria.style.backgroundColor = '#e3f2fd'; // Azul claro
         tagCategoria.style.color = '#0d47a1';           // Azul escuro
     } else {
-        tagCategoria.style.backgroundColor = '#e8f5e9'; // Verde claro
-        tagCategoria.style.color = '#1b5e20';           // Verde escuro
+        tagCategoria.style.backgroundColor = '#8c6aa0'; // Verde claro
+        tagCategoria.style.color = '#451b5e';           // Verde escuro
     }
     container.appendChild(tagCategoria);
 
