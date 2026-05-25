@@ -1,7 +1,4 @@
-/**
- * 1. BANCO DE DADOS DO QUIZ (Array de Objetos)
- * Guarda as perguntas, opções e o índice da resposta correta.
- */
+// 1. BANCO DE DADOS DO QUIZ (Array de Objetos)
 const perguntasQuiz = [
     {
         pergunta: "Qual é o principal benefício ambiental do projeto Carbon Matte na cultura da erva-mate?",
@@ -10,7 +7,7 @@ const perguntasQuiz = [
             "Absorver e estocar CO₂ da atmosfera, ajudando a combater o aquecimento global.",
             "Substituir completamente a água da irrigação por produtos químicos."
         ],
-        correta: 1 // Segunda opção é a correta
+        correta: 1
     },
     {
         pergunta: "Qual doce misterioso foi criado pelos alunos para gerar memórias afetivas com a erva-mate?",
@@ -19,7 +16,7 @@ const perguntasQuiz = [
             "Sorvete de erva-mate com calda de chocolate.",
             "Brigadeiro gourmet de erva-mate na casquinha de sorvete."
         ],
-        correta: 2 // Terceira opção é a correta
+        correta: 2
     },
     {
         pergunta: "Para que serve o QR Code instalado diretamente nas árvores de erva-mate?",
@@ -28,44 +25,37 @@ const perguntasQuiz = [
             "Para automação, registro de dados florestais e rastreabilidade no campo.",
             "Para conectar o celular à internet da fazenda."
         ],
-        correta: 1 // Segunda opção é a correta
+        correta: 1
     }
 ];
 
-// Variáveis de controle do estado do jogo (controlam a tela atual e os pontos)
+// Variáveis de controle do jogo
 let indicePerguntaAtual = 0;
 let pontuacao = 0;
 
-/**
- * 2. FUNÇÃO DE MANIPULAÇÃO DO DOM: Exibe a pergunta atual e as opções
- */
+// 2. FUNÇÃO PARA MOSTRAR A PERGUNTA
 function renderizarPergunta() {
     const container = document.getElementById('quizContainer');
-    
-    // Limpa o conteúdo do container para atualizar a tela sem dar F5
+    if (!container) return;
+
     container.innerHTML = ''; 
 
-    // Se o jogador respondeu a última pergunta, o jogo acaba e mostra o resultado
     if (indicePerguntaAtual >= perguntasQuiz.length) {
         exibirResultadoFinal();
         return;
     }
 
-    // Pega os dados da pergunta de acordo com a posição atual no array
     const dadosAtuais = perguntasQuiz[indicePerguntaAtual];
 
-    // Cria a tag <h3> para o texto da pergunta
     const tituloPergunta = document.createElement('h3');
     tituloPergunta.textContent = `Pergunta ${indicePerguntaAtual + 1}: ${dadosAtuais.pergunta}`;
     container.appendChild(tituloPergunta);
 
-    // Cria os botões das alternativas usando um loop funcional (forEach)
     dadosAtuais.opcoes.forEach((opcao, indice) => {
         const botaoOpcao = document.createElement('button');
-        botaoOpcao.textContent = opcao;
+        botaoOpcao.textContent = opacity = opcao;
         botaoOpcao.className = 'btn-opcao';
         
-        // Estilização básica aplicada diretamente via JavaScript para os botões do quiz
         botaoOpcao.style.display = 'block';
         botaoOpcao.style.margin = '10px 0';
         botaoOpcao.style.width = '100%';
@@ -73,21 +63,18 @@ function renderizarPergunta() {
         botaoOpcao.style.textAlign = 'left';
         botaoOpcao.style.cursor = 'pointer';
 
-        // Vincula o clique do botão à função que checa a resposta informando o índice clicado
-        botaoOpcao.addEventListener('click', () => verificarResposta(indice));
+        botaoOpcao.onclick = function() {
+            verificarResposta(indice);
+        };
         
-        // Injeta o botão criado dentro da seção do quiz
         container.appendChild(botaoOpcao);
     });
 }
 
-/**
- * 3. FUNÇÃO LÓGICA: Verifica se o usuário clicou na alternativa certa
- */
+// 3. FUNÇÃO PARA VERIFICAR A RESPOSTA
 function verificarResposta(indiceSelecionado) {
     const respostaCorreta = perguntasQuiz[indicePerguntaAtual].correta;
 
-    // Se o índice do botão clicado for igual ao guardado no banco de dados, soma ponto
     if (indiceSelecionado === respostaCorreta) {
         pontuacao++;
         alert('Parabéns, resposta correta! 🎉');
@@ -95,100 +82,47 @@ function verificarResposta(indiceSelecionado) {
         alert('Ops! Não foi dessa vez. Continue estudando a cultura do mate! 🌿');
     }
 
-    // Avança para a próxima pergunta e reconstrói o HTML na tela
     indicePerguntaAtual++;
     renderizarPergunta();
 }
 
-/**
- * 4. FUNÇÃO DE MANIPULAÇÃO DO DOM: Tela final do Quiz
- */
+// 4. FUNÇÃO DA TELA FINAL
 function exibirResultadoFinal() {
     const container = document.getElementById('quizContainer');
-    container.innerHTML = ''; // Limpa a última pergunta da tela
+    container.innerHTML = '';
 
-    // Cria e exibe os elementos de encerramento
     const tituloFim = document.createElement('h3');
     tituloFim.textContent = '🏆 Quiz Concluído!';
     
     const textoPontos = document.createElement('p');
     textoPontos.innerHTML = `Você acertou <strong>${pontuacao}</strong> de <strong>${perguntasQuiz.length}</strong> perguntas.`;
 
-    // Cria dinamicamente um botão para dar a opção de recomeçar
-    const btnReiniciar = document.createElement('button');
-    btnReiniciar.textContent = 'Jogar Novamente';
-    btnReiniciar.style.padding = '10px 20px';
-    btnReiniciar.style.cursor = 'pointer';
-    
-    // Configura o evento de clique para reiniciar os dados
-    btnReiniciar.addEventListener('click', reiniciarQuiz);
-
-    // Renderiza tudo na ordem correta
-    container.appendChild(tituloFim);
-    container.appendChild(textoPontos);
-    container.appendChild(btnReiniciar);
-}
-
-/**
- * 5. FUNÇÃO DE CONTROLE: Reinicia os valores do jogo para o estado inicial
- */
-function reiniciarQuiz() {
-    indicePerguntaAtual = 0;
-    pontuacao = 0;
-    renderizarPergunta(); // Recomeça exibindo a primeira pergunta
-}
-
-// 6. EVENT LISTENER: Inicializa o botão de largada que está escrito no seu HTML original
-const btnIniciar = document.getElementById('btnIniciarQuiz');
-if (btnIniciar) {
-    btnIniciar.addEventListener('click', renderizarPergunta);
-
-/**
- * 4. FUNÇÃO DE MANIPULAÇÃO DO DOM: Tela final do Quiz
- */
-function exibirResultadoFinal() {
-    const container = document.getElementById('quizContainer');
-    container.innerHTML = ''; // Limpa a última pergunta da tela
-
-    // Cria e exibe os elementos de encerramento
-    const tituloFim = document.createElement('h3');
-    tituloFim.textContent = '🏆 Quiz Concluído!';
-    
-    const textoPontos = document.createElement('p');
-    textoPontos.innerHTML = `Você acertou <strong>${pontuacao}</strong> de <strong>${perguntasQuiz.length}</strong> perguntas.`;
-
-    // Cria dinamicamente um botão para dar a opção de recomeçar
     const btnReiniciar = document.createElement('button');
     btnReiniciar.textContent = 'Jogar Novamente';
     btnReiniciar.style.padding = '10px 20px';
     btnReiniciar.style.cursor = 'pointer';
     btnReiniciar.style.marginTop = '15px';
     
-    // Configura o evento de clique para reiniciar os dados
-    btnReiniciar.addEventListener('click', function() {
+    btnReiniciar.onclick = function() {
         reiniciarQuiz();
-    });
+    };
 
-    // Renderiza tudo na ordem correta
     container.appendChild(tituloFim);
     container.appendChild(textoPontos);
     container.appendChild(btnReiniciar);
 }
 
-/**
- * 5. FUNÇÃO DE CONTROLE: Reinicia os valores do jogo para o estado inicial
- */
+// 5. FUNÇÃO PARA REINICIAR
 function reiniciarQuiz() {
     indicePerguntaAtual = 0;
     pontuacao = 0;
-    renderizarPergunta(); // Recomeça exibindo a primeira pergunta
+    renderizarPergunta();
 }
 
-// 6. EVENT LISTENER: Inicializa o botão de largada que está escrito no seu HTML original
+// 6. ATIVAÇÃO DO BOTÃO INICIAL
 const btnIniciar = document.getElementById('btnIniciarQuiz');
 if (btnIniciar) {
-    btnIniciar.addEventListener('click', function() {
+    btnIniciar.onclick = function() {
         renderizarPergunta();
-    });
-}
+    };
 }
