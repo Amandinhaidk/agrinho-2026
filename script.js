@@ -106,17 +106,19 @@
 ];
 
 
-// Variáveis de controle do jogo
+// Variáveis de controlo do progresso do jogo
 let indicePerguntaAtual = 0;
 let pontuacao = 0;
 
-// 2. FUNÇÃO PARA MOSTRAR A PERGUNTA
+// 2. FUNÇÃO PARA MOSTRAR A PERGUNTA (Manipulação do DOM)
 function renderizarPergunta() {
     const container = document.getElementById('quizContainer');
     if (!container) return;
 
+    // Limpa o ecrã para receber a nova pergunta
     container.innerHTML = ''; 
 
+    // Se o índice chegar ao fim do array (agora são 6 perguntas), termina o jogo
     if (indicePerguntaAtual >= perguntasQuiz.length) {
         exibirResultadoFinal();
         return;
@@ -124,10 +126,33 @@ function renderizarPergunta() {
 
     const dadosAtuais = perguntasQuiz[indicePerguntaAtual];
 
+    // [NOVO] CRIAÇÃO DA TAG DE CATEGORIA DINÂMICA
+    const tagCategoria = document.createElement('span');
+    tagCategoria.textContent = `Categoria: ${dadosAtuais.categoria}`;
+    tagCategoria.style.display = 'inline-block';
+    tagCategoria.style.marginBottom = '10px';
+    tagCategoria.style.padding = '5px 10px';
+    tagCategoria.style.borderRadius = '5px';
+    tagCategoria.style.fontSize = '12px';
+    tagCategoria.style.fontWeight = 'bold';
+
+    // Condição para mudar a cor do selo baseado na categoria
+    if (dadosAtuais.categoria === "Sobre o Projeto") {
+        tagCategoria.style.backgroundColor = '#e3f2fd'; // Azul claro
+        tagCategoria.style.color = '#0d47a1';           // Azul escuro
+    } else {
+        tagCategoria.style.backgroundColor = '#e8f5e9'; // Verde claro
+        tagCategoria.style.color = '#1b5e20';           // Verde escuro
+    }
+    container.appendChild(tagCategoria);
+
+    // Cria o título da pergunta
     const tituloPergunta = document.createElement('h3');
     tituloPergunta.textContent = `Pergunta ${indicePerguntaAtual + 1}: ${dadosAtuais.pergunta}`;
+    tituloPergunta.style.marginTop = '5px';
     container.appendChild(tituloPergunta);
 
+    // Cria os botões das alternativas
     dadosAtuais.opcoes.forEach((opcao, indice) => {
         const botaoOpcao = document.createElement('button');
         botaoOpcao.textContent = opcao;
