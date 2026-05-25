@@ -65,7 +65,7 @@ p {
     border: none;
     cursor: pointer;
     padding: 10px;
-    color: #4496c5; /* Verde mate */
+    color: #265875; /* Verde mate */
     position: fixed;
     top: 15px;
     left: 15px;
@@ -121,7 +121,7 @@ p {
 }
 
 .menu-lateral ul li a:hover {
-    color: #4496c5;
+    color: #265875;
 }
 
 /* Máscara de fundo */
