@@ -57,3 +57,29 @@ p {
     background-color: #1557b0;
     transform: scale(1.05); /* Dá um leve aumento ao passar o mouse */
 }
+
+/* Cor padrão do botão de três pontinhos */
+#btnMenuPontinhos {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    color: #333; /* Cor padrão: grafite */
+    transition: color 0.3s ease; /* Efeito suave ao mudar de cor */
+}
+
+/* Cor do botão quando a aba estiver aberta */
+#btnMenuPontinhos.aberto {
+    color: #a4c1ee; 
+}
+
+/* Estilo da caixinha de características */
+#abaCaracteristicas {
+    display: none; /* Começa escondida */
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #a4c1ee;
+}
