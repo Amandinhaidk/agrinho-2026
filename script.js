@@ -35,7 +35,7 @@ const perguntasQuiz = [
             "Os imigrantes que fundaram as primeiras ervateiras"
         ],
         correta: 2
-    },
+    }
 ];
 
 // Variáveis de controle do jogo
