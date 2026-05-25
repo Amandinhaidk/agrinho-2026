@@ -1,22 +1,23 @@
-//================================================================================================
-//RECURSO: MENU DE TRÊS PONTINHOS(EXIBIR/OCULTAR ABA)
-//================================================================================================
+// =======================================================
+// RECURSO: MENU DE TRÊS PONTINHOS 
+// =======================================================
 
-//1. MAPEIA OS ELEMENTOS DO HTML
-const btnPontinhos =document.getElementById('btnPontinhos');
-const abaCaracteristicas =document.getElementById('abaCaracteristicas')
+const btnPontinhos = document.getElementById('btnMenuPontinhos');
+const abaCaracteristicas = document.getElementById('abaCaracteristicas');
 
-//2.FUNÇÃO CONTROLADORA (muda o estado de exibição do elemento)
-function alternarAbaCaracteristicas(){
-    //Se a aba estiver escondida (none), ela aparece (block). Se ela estiver aparecendo, ela esconde.
-    if (abaCaracteristicas.style.display === 'none') {
-        abaCaracteristicas.style.display = 'block' ;
+function alternarAbaCaracteristicas() {
+    // Pega o estilo atual da aba que está sendo aplicado pelo CSS
+    const estiloAtual = window.getComputedStyle(abaCaracteristicas).display;
+
+    if (estiloAtual === 'none') {
+        abaCaracteristicas.style.display = 'block';
+        btnPontinhos.classList.add('aberto'); // Adiciona a classe que o CSS pinta de verde
     } else {
         abaCaracteristicas.style.display = 'none';
+        btnPontinhos.classList.remove('aberto'); // Remove a classe e volta para o grafite
     }
 }
 
-//3. EVENT LISTENER (Dispara a função ao clicar)
 if (btnPontinhos && abaCaracteristicas) {
-    btnPontinhos.addEventListener('click', alternarAbaCaracteristicas)
+    btnPontinhos.addEventListener('click', alternarAbaCaracteristicas);
 }
