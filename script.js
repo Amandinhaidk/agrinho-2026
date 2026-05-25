@@ -53,7 +53,7 @@ function renderizarPergunta() {
 
     dadosAtuais.opcoes.forEach((opcao, indice) => {
         const botaoOpcao = document.createElement('button');
-        botaoOpcao.textContent = opacity = opcao;
+        botaoOpcao.textContent = opcao;
         botaoOpcao.className = 'btn-opcao';
         
         botaoOpcao.style.display = 'block';
