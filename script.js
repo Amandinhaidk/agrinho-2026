@@ -91,7 +91,7 @@
             "Filtro",
             "Bomba"
         ],
-        correta: 1
+        correta: 2
     },
      {
         categoria: "Conhecimento Geral",
