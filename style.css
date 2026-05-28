@@ -58,84 +58,75 @@ p {
     transform: scale(1.05); /* Dá um leve aumento ao passar o mouse */
 }
 
-/* Ícone das Três Barrinhas */
-.menu-icone {
-    font-size: 30px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    color: #2e677d; /* Verde mate */
+/* =======================================================
+   ESTILIZAÇÃO DO MENU HAMBÚRGUER E MÁSCARA (ABAS LATERAIS)
+   ======================================================= */
+
+/* Botão que abre o menu (fixo no topo para sempre estar visível) */
+#btnMenuHamburguer {
     position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 100;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Garante que fica em cima de tudo */
+    padding: 10px 15px;
+    background-color: #2e7d32; /* Um verde bonito pro tema do Agrinho */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Painel Lateral */
-.menu-lateral {
+/* O Painel Lateral (Menu) */
+#menuAbas {
     position: fixed;
     top: 0;
-    left: -250px; /* Começa escondido à esquerda */
-    width: 250px;
-    height: 100%;
+    left: -300px; /* IMPORTANTE: Começa fora da tela (escondido à esquerda) */
+    width: 280px;
+    height: 100vh; /* Ocupa a altura inteira da tela */
     background-color: #ffffff;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-    transition: left 0.3s ease;
-    z-index: 101;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1002; /* Fica acima da máscara de fundo */
+    transition: left 0.3s ease; /* Efeito suave de deslizar */
     padding: 20px;
     box-sizing: border-box;
 }
 
-/* Quando o menu ganha a classe aberto, ele desliza para a tela */
-.menu-lateral.aberto {
-    left: 0;
+/* Quando o JS adiciona a classe 'aberto', o menu desliza para dentro da tela */
+#menuAbas.aberto {
+    left: 0; 
 }
 
-/* Botão de fechar (X) */
-.btn-fechar {
-    background: none;
+/* Botão de fechar dentro do menu */
+#btnFecharMenu {
+    background: #d32f2f;
+    color: white;
     border: none;
-    font-size: 28px;
+    padding: 8px 12px;
+    border-radius: 4px;
     cursor: pointer;
-    float: right;
-    color: #888;
+    float: right; /* Joga o botão para a direita do menu */
+    margin-bottom: 20px;
 }
 
-.menu-lateral ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 40px;
-}
-
-.menu-lateral ul li {
-    margin: 20px 0;
-}
-
-.menu-lateral ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    font-weight: 500;
-    display: block;
-}
-
-.menu-lateral ul li a:hover {
-    color: #2e677d;
-}
-
-/* Máscara de fundo */
-.mascara-fundo {
-    display: none;
+/* Máscara escura que cobre o resto da tela quando o menu abre */
+#mascaraFundo {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto semi-transparente */
+    z-index: 1001;
+    display: none; /* Começa totalmente escondida */
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.mascara-fundo.aberto {
+/* Quando o JS adiciona a classe 'aberto', a máscara aparece */
+#mascaraFundo.aberto {
     display: block;
+    opacity: 1;
 }
