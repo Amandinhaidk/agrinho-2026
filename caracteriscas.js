@@ -1,8 +1,37 @@
 // =======================================================
-// RECURSO: MENU HAMBÚRGUER (ABAS LATERAIS)
+// RECURSO: MENU HAMBÚRGUER E NAVEGAÇÃO INTERNA (SPA)
 // =======================================================
 
-// Aguarda todo o HTML da página ser carregado antes de rodar o script
+// Criamos a função fecharMenu do lado de fora para que os links do HTML consigam usá-la
+function fecharMenu() {
+    const menuAbas = document.getElementById('menuAbas');
+    const mascaraFundo = document.getElementById('mascaraFundo');
+    if (menuAbas && mascaraFundo) {
+        menuAbas.classList.remove('aberto');
+        mascaraFundo.classList.remove('aberto');
+        console.log("Menu fechado com sucesso!");
+    }
+}
+
+// NOVA FUNÇÃO: Esconde a seção atual e mostra a selecionada
+function navegarPara(idDaSecao) {
+    // 1. Procura a seção que está aberta no momento e esconde ela
+    const secaoAtual = document.querySelector('.card.secao-ativa');
+    if (secaoAtual) {
+        secaoAtual.classList.remove('secao-ativa');
+    }
+
+    // 2. Encontra a nova seção clicada e mostra ela na tela
+    const novaSecao = document.getElementById(idDaSecao);
+    if (novaSecao) {
+        novaSecao.classList.add('secao-ativa');
+    }
+
+    // 3. Fecha o menu lateral automaticamente após o clique
+    fecharMenu();
+}
+
+// Aguarda todo o HTML da página ser carregado antes de configurar os cliques
 document.addEventListener('DOMContentLoaded', () => {
     
     const btnHamburguer = document.getElementById('btnMenuHamburguer');
@@ -10,21 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFechar = document.getElementById('btnFecharMenu');
     const mascaraFundo = document.getElementById('mascaraFundo');
 
-    // Função para abrir o painel lateral
+    // Função interna para abrir
     function abrirMenu() {
         if (menuAbas && mascaraFundo) {
             menuAbas.classList.add('aberto');
             mascaraFundo.classList.add('aberto');
-            console.log("Menu aberto com sucesso!"); // Linha de teste no console
-        }
-    }
-
-    // Função para fechar o painel lateral
-    function fecharMenu() {
-        if (menuAbas && mascaraFundo) {
-            menuAbas.classList.remove('aberto');
-            mascaraFundo.classList.remove('aberto');
-            console.log("Menu fechado com sucesso!"); // Linha de teste no console
+            console.log("Menu aberto com sucesso!");
         }
     }
 
@@ -34,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnFechar.addEventListener('click', fecharMenu);
         mascaraFundo.addEventListener('click', fecharMenu);
     } else {
-        // Alerta caso falte algum ID no seu HTML
         console.error("Erro: Um ou mais elementos do menu não foram encontrados no HTML.");
     }
 });
+
