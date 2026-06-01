@@ -1,3 +1,8 @@
+Aqui está o seu código HTML original totalmente reconstruído, corrigido e integrado de forma cirúrgica.
+
+As tags quebradas foram limpas, os blocos de conteúdo foram aninhados na ordem correta, e todas as seções receberam seus respectivos atributos id e classes estruturais corretas para conversão automática em abas funcionais (SPA).
+
+HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,28 +10,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Agrinho 2026 - Erva-Mate Bituruna</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
+
     <button id="btnMenuHamburguer" class="menu-icone">☰ Menu</button>
 
     <div id="menuAbas">
-
-        <button id="btnFecharMenu">Fechar &times;</button>
+        <div class="menu-header">
+            <h3>Navegação 🌿</h3>
+            <button id="btnFecharMenu">Fechar &times;</button>
+        </div>
+        
         <nav>
-            <p>Menu de Navegação</p>
+            <ul class="menu-links">
+                <li><a href="#" onclick="navegarPara('contextualizacao')">🌱 Contextualização</a></li>
+                <li><a href="#" onclick="navegarPara('praticas')">🚜 Práticas no Campo</a></li>
+                <li><a href="#" onclick="navegarPara('tecnologia')">🤖 Tecnologia e IA</a></li>
+                <li><a href="#" onclick="navegarPara('doces')">🍬 Doces de Erva-Mate</a></li>
+                <li><a href="#" onclick="navegarPara('galeria')">📸 Galeria do Projeto</a></li>
+                <li><a href="#" onclick="navegarPara('quiz')">🎮 Quiz Interativo</a></li>
+            </ul>
         </nav>
+
+        <div class="menu-footer">
+            <p><strong>Agrinho 2026</strong></p>
+            <p>Bituruna - PR</p>
+        </div>
     </div>
-    <ul>class="menu-links"></ul> 
-        <li><a href="#" onclick="navegarPara('contextualizacao')">🌱 Contextualização</a></li>
-        <li><a href="#" onclick="navegarPara('praticas')">🚜 Práticas no Campo</a></li>
-        <li><a href="#" onclick="navegarPara('tecnologia')">🤖 Tecnologia e IA</a></li>
-        <li><a href="#" onclick="navegarPara('doces')">🍬 Doces de Erva-Mate</a></li>
-        <li><a href="#" onclick="navegarPara('galeria')">📸 Galeria do Projeto</a></li>
-        <li><a href="#" onclick="navegarPara('quiz')">🎮 Quiz Interativo</a></li>
-    </ul>
-    <div class="menu-footer">
-        <p><strong>Agrinho 2026</strong></p>
+
     <div id="mascaraFundo"></div>
 
     <header>
@@ -39,12 +50,12 @@
 
     <main class="container">
         
-        <section class="card">
+        <section id="contextualizacao" class="card secao-ativa">
             <h2>Contextualização e Justificativa do Tema</h2>
             <p>O projeto toma como ponto de partida a cultura da erva-mate no município de Bituruna (PR). Sendo uma região onde a totalidade das famílias dos estudantes da escola do campo está envolvida na cadeia produtiva do mate (seja no cultivo ou em ervateiras), a planta foi utilizada como um elo cultural, econômico e ambiental para conectar a comunidade escolar às novas tecnologias.</p>
         </section>
 
-        <section class="card">
+        <section id="praticas" class="card">
             <h2>Casos de Uso e Práticas Identificadas</h2>
             <p class="intro-secao">Para o desenvolvimento de soluções tecnológicas, foram mapeadas e vivenciadas as seguintes realidades no manejo da erva-mate:</p>
             
@@ -56,11 +67,11 @@
 
                 <div class="subcard">
                     <h3>Sustentabilidade e Créditos de Carbono (Carbon Matte)</h3>
-                    <p>Objtivo: esta parte do projeto teve como foco principal debater as mudanças climáticas e o aquecimento global conectando a comunidade escolar a práticas sustentáveis(princípios ESG). Também incluso o entendimento sobre gases de efeito estufa(GEE) e introdução da tecnologia Carbon Matte, que estuda o papel da erva-mate no sequestro de carbono.</p>
-                    <p>Fundamentação Científica: na aula de ciências, os alunos aprenderam sobre os gases CO2 (Dióxido de carbono) e CH4 (metano), compreendendo como a cultura da erva-mate ajuda a absorver carbono na biomassa e no solo, mitigando os impactos ambientais. <br>
-                    Tecnologia em Sala de Aula: Na aula de História, utilizando dados da Embrap e a TV Educatron, os estudantes exploraram a Calculadora de Carbono. Eles analisaram planilhas eletrônicas que avaliam os estoque de carbono e as emissões de GEE durante o cultivo da erva-mate.<br>
-                    Reflexão Coletiva: Através de diálogo interativos, debateu-e como as soluções para a crise climática começam no cotidiano, reforçando a importância da responsabilidade individual na redução de poluentes <br>
-                    Engajamento da Família: Por meio de questionários, os familiares compartilham suas preocupações com o aquecimento global e concordam que a ação local e individual é tão crucial quanto as políticas governamentais. </p>
+                    <p><strong>Objetivo:</strong> esta parte do projeto teve como foco principal debater as mudanças climáticas e o aquecimento global conectando a comunidade escolar a práticas sustentáveis (princípios ESG). Também incluso o entendimento sobre gases de efeito estufa (GEE) e introdução da tecnologia Carbon Matte, que estuda o papel da erva-mate no sequestro de carbono.</p>
+                    <p><strong>Fundamentação Científica:</strong> na aula de ciências, os alunos aprenderam sobre os gases CO2 (Dióxido de carbono) e CH4 (metano), compreendendo como a cultura da erva-mate ajuda a absorver carbono na biomassa e no solo, mitigando os impactos ambientais.<br><br>
+                    <strong>Tecnologia em Sala de Aula:</strong> Na aula de História, utilizando dados da Embrapa e a TV Educatron, os estudantes exploraram a Calculadora de Carbono. Eles analisaram planilhas eletrônicas que avaliam os estoque de carbono e as emissões de GEE durante o cultivo da erva-mate.<br><br>
+                    <strong>Reflexão Coletiva:</strong> Através de diálogos interativos, debateu-se como as soluções para a crise climática começam no cotidiano, reforçando a importância da responsabilidade individual na redução de poluentes.<br><br>
+                    <strong>Engajamento da Família:</strong> Por meio de questionários, os familiares compartilham suas preocupações com o aquecimento global e concordam que a ação local e individual é tão crucial quanto as políticas governamentais.</p>
                 </div>
 
                 <div class="subcard">
@@ -70,7 +81,7 @@
             </div>
         </section>
 
-        <section class="card">
+        <section id="tecnologia" class="card">
             <h2>Tecnologia, IA e Empreendedorismo Rural</h2>
             
             <div class="destaque">
@@ -83,30 +94,42 @@
                 <p>O estudo demonstrou que a inserção de recursos digitais e softwares de gestão na rotina do ecossistema da erva-mate moderniza o setor, atrai o interesse dos produtores rurais por inovação e viabiliza o empreendedorismo digital, incentivando a sucessão familiar e a permanência do jovem no campo.</p>
             </div>
         </section>
-            <div class="destaque">
-                <h3>Doces Criados com a erva mate</h3>
-                <p>Objetivos: Avaliar a viabilidade do projeto pedagógico. Analisar o envolvimento e a participação das famílias. Criar memórias afetivas marcantes na escola e em casa.<br>
-                Atividade Sensorial (A Surpresa): Os alunos desenharam o que imaginavam ser o doce misterioso e, usando o tato e o olfato de olhos fechados, tentaram adivinhá-lo. Ao final, descobriram um brigadeiro gourmet de erva-mate na casquinha de sorvete, gerando grande encantamento e uma memória afetiva positiva.<br>
-                Questionário e Investigação: Foi aplicado um questionário para entender a relação das famílias com a erva-mate (cultivo, trabalho em ervateiras e o hábito diário do chimarrão).<br>
-                Análise dos Dados: As respostas confirmaram que 100% das famílias têm forte ligação com a erva-mate no seu cotidiano e no trabalho.</p>
-            <div class="destaque">
-                <h3></h3>
 
-                <section class="card">
-                <h2>Quiz Interativo: Sabores e Saberes da Erva-Mate</h2>
-                <p>Teste seus conhecimentos sobre a cultura do mate, sustentabilidade e as tradições de Bituruna!</p>
-                
-                <div id="quizContainer" style="margin-top: 20px; padding: 15px; border-top: 1px solid #eee;">
-                    <button id="btnIniciarQuiz" style="padding: 10px 20px; cursor: pointer; font-size: 16px;">Iniciar Quiz</button>
-                </div>
-            </section>
+        <section id="doces" class="card">
+            <h2>Doces Criados com a Erva-Mate</h2>
+            <div class="destaque">
+                <p><strong>Objetivos:</strong> Avaliar a viabilidade do projeto pedagógico. Analisar o envolvimento e a participação das famílias. Criar memórias afetivas marcantes na escola e em casa.</p>
+                <p><strong>Atividade Sensorial (A Surpresa):</strong> Os alunos desenharam o que imaginavam ser o doce misterioso e, usando o tato e o olfato de olhos fechados, tentaram adivinhá-lo. Ao final, descobriram um brigadeiro gourmet de erva-mate na casquinha de sorvete, gerando grande encantamento e uma memória afetiva positiva.</p>
+                <p><strong>Questionário e Investigação:</strong> Foi aplicado um questionário para entender a relação das famílias com a erva-mate (cultivo, trabalho em ervateiras e o hábito diário do chimarrão).</p>
+                <p><strong>Análise dos Dados:</strong> As respostas confirmaram que 100% das famílias têm forte ligação com a erva-mate no seu cotidiano e no trabalho.</p>
             </div>
-            
-    </section>
-</main>
         </section>
 
-            </main>
+        <section id="galeria" class="card">
+            <h2>📸 Galeria de Fotos do Projeto</h2>
+            <p>Registros das atividades práticas, pesquisas e vivências dos estudantes na cultura da erva-mate.</p>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="imagem1.jpg" alt="Atividade prática">
+                    <p class="legenda">Estudo de campo e rastreabilidade</p>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagem2.jpg" alt="Uso de QR Code">
+                    <p class="legenda">Tecnologia QR Code no matezal</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="card">
+            <h2>Quiz Interativo: Sabores e Saberes da Erva-Mate</h2>
+            <p>Teste seus conhecimentos sobre a cultura do mate, sustentabilidade e as tradições de Bituruna!</p>
+            
+            <div id="quizContainer" style="margin-top: 20px; padding: 15px; border-top: 1px solid #eee;">
+                <button id="btnIniciarQuiz">Iniciar Quiz</button>
+            </div>
+        </section>
+
+    </main>
 
     <footer>
         <p>&copy; 2026 - Projeto Escolar Agrinho de Programação. Desenvolvido no GitHub por Amanda Dias</p>
@@ -115,6 +138,5 @@
     <script src="script.js" defer></script>
     <script src="caracteriscas.js" defer></script>
 
-</p>
-
 </body>
+</html>
