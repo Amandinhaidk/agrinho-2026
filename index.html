@@ -5,27 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Agrinho 2026 - Erva-Mate Bituruna</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
+
     <button id="btnMenuHamburguer" class="menu-icone">☰ Menu</button>
 
     <div id="menuAbas">
-        <button id="btnFecharMenu">Fechar &times;</button>
-        <nav>
-            <p>Menu de Navegação</p>
-        </nav>
+        <div class="menu-header">
+            <h3>Navegação</h3>
+            <button id="btnFecharMenu">Fechar &times;</button>
+        </div>
+        
+        <ul class="menu-links">
+            <li><a href="#" onclick="navegarPara('contextualizacao')">🌱 Contextualização</a></li>
+            <li><a href="#" onclick="navegarPara('praticas')">🚜 Práticas no Campo</a></li>
+            <li><a href="#" onclick="navegarPara('tecnologia')">🤖 Tecnologia e IA</a></li>
+            <li><a href="#" onclick="navegarPara('doces')">🍬 Doces de Erva-Mate</a></li>
+            <li><a href="#" onclick="navegarPara('galeria')">📸 Galeria do Projeto</a></li>
+            <li><a href="#" onclick="navegarPara('quiz')">🎮 Quiz Interativo</a></li>
+        </ul>
+
+        <div class="menu-footer">
+            <p><strong>Agrinho 2026</strong></p>
+            <p>Bituruna - PR</p>
+        </div>
     </div>
-    <ul>class="menu-links"></ul> 
-        <li><a href="#" onclick="navegarPara('contextualizacao')">🌱 Contextualização</a></li>
-        <li><a href="#" onclick="navegarPara('praticas')">🚜 Práticas no Campo</a></li>
-        <li><a href="#" onclick="navegarPara('tecnologia')">🤖 Tecnologia e IA</a></li>
-        <li><a href="#" onclick="navegarPara('doces')">🍬 Doces de Erva-Mate</a></li>
-        <li><a href="#" onclick="navegarPara('galeria')">📸 Galeria do Projeto</a></li>
-        <li><a href="#" onclick="navegarPara('quiz')">🎮 Quiz Interativo</a></li>
-    </ul>
-    <div class="menu-footer">
-        <p><strong>Agrinho 2026</strong></p>
+
     <div id="mascaraFundo"></div>
 
     <header>
