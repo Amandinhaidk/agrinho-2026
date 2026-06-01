@@ -59,89 +59,52 @@ p {
 }
 
 /* =======================================================
-   ESTILIZAÇÃO DO MENU HAMBÚRGUER E MÁSCARA (ABAS LATERAIS)
+   REVISÃO DO MENU LATERAL (A CAIXA QUE ABRE E FECHA)
    ======================================================= */
 
-/* Botão que abre o menu (fixo no topo para sempre estar visível) */
-#btnMenuHamburguer {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000; /* Garante que fica em cima de tudo */
-    padding: 10px 15px;
-    background-color: #2e7d32; /* Um verde bonito pro tema do Agrinho */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* O Painel Lateral (Menu) */
 #menuAbas {
-    position: fixed;
+    position: fixed; /* Prende o menu na tela, independente da rolagem */
     top: 0;
-    left: -300px; /* IMPORTANTE: Começa fora da tela (escondido à esquerda) */
-    width: 280px;
-    height: 100vh; /* Ocupa a altura inteira da tela */
-    background-color: #ffffff;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1002; /* Fica acima da máscara de fundo */
-    transition: left 0.3s ease; /* Efeito suave de deslizar */
+    left: -320px; /* Joga ele totalmente para a esquerda (escondido) */
+    width: 280px; /* Largura do menu lateral */
+    height: 100vh; /* Ocupa do topo até o chão da tela */
+    background-color: #ffffff !important; /* Força o fundo a ser branco */
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2); /* Sombra para dar efeito de aba por cima */
+    z-index: 1002; /* Mantém ele na frente de tudo */
+    transition: left 0.3s ease; /* Efeito suave ao deslizar */
     padding: 20px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Garante que o padding não quebre o tamanho */
 }
 
-/* Quando o JS adiciona a classe 'aberto', o menu desliza para dentro da tela */
+/* Quando o menu ganha a classe 'aberto' pelo JS, ele desliza para a tela */
 #menuAbas.aberto {
-    left: 0; 
+    left: 0 !important;
 }
 
-/* Botão de fechar dentro do menu */
-#btnFecharMenu {
-    background: #d32f2f;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right; /* Joga o botão para a direita do menu */
-    margin-bottom: 20px;
+/* Garante que os links fiquem em lista vertical e organizados */
+.menu-links {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    text-align: left; /* Alinha o texto para a esquerda dentro do menu */
 }
 
-/* Máscara escura que cobre o resto da tela quando o menu abre */
-#mascaraFundo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto semi-transparente */
-    z-index: 1001;
-    display: none; /* Começa totalmente escondida */
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.menu-links li {
+    margin-bottom: 12px;
 }
 
-/* Quando o JS adiciona a classe 'aberto', a máscara aparece */
-#mascaraFundo.aberto {
+.menu-links a {
     display: block;
-    opacity: 1;
-}
-/* Esconde todas as seções por padrão */
-main .card {
-    display: none;
-}
-
-/* Cria uma classe especial que mostra apenas a seção ativa */
-main .card.secao-ativa {
-    display: block;
-    animation: fadeIn 0.5s ease; /* Um efeito suave de aparecimento */
+    color: #333333;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f7f9f7;
+    transition: background 0.2s;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.menu-links a:hover {
+    background-color: #e8f5e9;
+    color: #2e7d32;
 }
