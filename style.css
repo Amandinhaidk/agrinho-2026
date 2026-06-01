@@ -1,4 +1,4 @@
-/* 1. RESET: Remove estilos chatos que o navegador coloca sozinho */
+/* 1. RESET: Remove estilos de fábrica do navegador */
 * {
     margin: 0;
     padding: 0;
@@ -6,81 +6,273 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 2. CORPO DO SITE: Define a cor de fundo e alinhamento */
+/* 2. CORPO DO SITE CORRIGIDO */
 body {
     background-color: #a4c1ee;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 60px 20px 20px 20px; /* Espaço no topo para o botão não cobrir nada */
 }
 
-/* 3. CARD PRINCIPAL: Para o conteúdo não ficar espalhado */
+/* 3. CONTAINERS E CARDS PRINCIPAIS AJUSTADOS */
 .container {
+    width: 100%;
+    max-width: 900px; /* Aumentado para o texto respirar e ficar elegante */
+    margin: 0 auto 20px auto; /* Centraliza na tela sem esmagar */
+}
+
+main .card {
     background: white;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+    
+    /* COMPORTAMENTO SPA: Esconde as seções por padrão */
+    display: none; 
+}
+
+/* Exibe apenas a seção que o JavaScript ativar */
+main .card.secao-ativa {
+    display: block !important;
+    animation: fadeInSuave 0.4s ease-in-out;
+}
+
+@keyframes fadeInSuave {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Subcards internos das seções */
+.subtopicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.subcard, .destaque {
+    background-color: #f7f9f7;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #2e7d32;
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 /* 4. TIPOGRAFIA */
-h1 {
-    color: #3fc4c9;
-    margin-bottom: 1rem;
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #2e7d32; /* Verde mate */
+    margin-bottom: 1.2rem;
+}
+
+h3 {
+    color: #1b5e20;
+    margin-bottom: 0.5rem;
 }
 
 p {
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
+    margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
-/* 5. BOTÃO ESTILIZADO: Com efeito de passar o mouse (hover) */
-.botao {
+/* 5. BOTÕES DO PROJETO */
+.botao, #btnIniciarQuiz {
     display: inline-block;
     background-color: #1a73e8;
     color: white;
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 6px;
-    transition: background 0.3s ease, transform 0.2s;
+    transition: background 0.3s, transform 0.2s;
     font-weight: bold;
     border: none;
     cursor: pointer;
 }
 
-.botao:hover {
+.botao:hover, #btnIniciarQuiz:hover {
     background-color: #1557b0;
-    transform: scale(1.05); /* Dá um leve aumento ao passar o mouse */
+    transform: scale(1.03);
 }
+
 /* =======================================================
-   ESTILO DO BOTÃO DE ABRIR O MENU (CONVERTIDO EM FIXO)
+   6. CONTROLES DO MENU HAMBÚRGUER E ABAS (FIXOS)
    ======================================================= */
 
 #btnMenuHamburguer {
-    position: fixed !important; /* Retira o botão do fluxo comum e prende na tela */
-    top: 15px !important;       /* Distância do topo */
-    left: 15px !important;      /* Distância da lateral esquerda */
-    z-index: 3000 !important;   /* Garante que ele fique na frente do fundo azul e dos cards */
+    position: fixed !important;
+    top: 15px !important;
+    left: 15px !important;
+    z-index: 4000 !important; /* Ganha prioridade máxima de clique */
     
-    /* Customização Visual do Botão */
-    background-color: #2e7d32 !important; /* Verde oficial do Agrinho */
-    color: #ffffff !important;            /* Letras brancas */
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
     padding: 10px 16px !important;
     border: none !important;
     border-radius: 6px !important;
     cursor: pointer !important;
     font-weight: bold !important;
     font-size: 15px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important; /* Sombra para dar destaque */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
     transition: background-color 0.2s ease !important;
 }
 
-/* Efeito ao passar o mouse por cima */
 #btnMenuHamburguer:hover {
-    background-color: #1b5e20 !important; /* Verde mais escuro */
+    background-color: #1b5e20 !important;
+}
+
+/* Estrutura da gaveta do menu lateral */
+#menuAbas {
+    position: fixed !important;
+    top: 0;
+    left: -320px; /* Guardado fora da tela na esquerda */
+    width: 280px;
+    height: 100vh;
+    background-color: #ffffff !important;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 5000 !important; /* Fica por cima de tudo ao abrir */
+    transition: left 0.3s ease-in-out;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+#menuAbas.aberto {
+    left: 0 !important; /* Desliza para dentro da tela */
+}
+
+/* Máscara de Fundo */
+#mascaraFundo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 4500 !important;
+}
+
+#mascaraFundo.aberto {
+    display: block !important;
+}
+
+/* Estilos internos do Menu */
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #2e7d32;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.menu-header h3 {
+    margin: 0;
+    color: #2e7d32;
+}
+
+#btnFecharMenu {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#btnFecharMenu:hover {
+    color: #d32f2f;
+}
+
+.menu-links {
+    list-style: none;
+}
+
+.menu-links li {
+    margin-bottom: 12px;
+}
+
+.menu-links a {
+    display: block;
+    color: #333333;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: #f4f6f4;
+    transition: all 0.2s ease;
+}
+
+.menu-links a:hover {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding-left: 18px;
+}
+
+.menu-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    right: 25px;
+    font-size: 13px;
+    text-align: center;
+    color: #777;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+/* 7. GRID DE IMAGENS DA GALERIA */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.galeria-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.legenda {
+    padding: 8px;
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+    font-size: 14px;
+    opacity: 0.8;
 }

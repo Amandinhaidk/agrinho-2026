@@ -1,59 +1,62 @@
 // =======================================================
-// RECURSO: MENU HAMBÚRGUER E NAVEGAÇÃO INTERNA (SPA)
+// RECURSO: CONFIGURAÇÃO DE NAVEGAÇÃO E MENU LATERAL (SPA)
 // =======================================================
 
-// Criamos a função fecharMenu do lado de fora para que os links do HTML consigam usá-la
+// 1. FUNÇÕES GLOBAIS (Ficam de fora para o HTML conseguir chamar no 'onclick')
+
 function fecharMenu() {
     const menuAbas = document.getElementById('menuAbas');
     const mascaraFundo = document.getElementById('mascaraFundo');
-    if (menuAbas && mascaraFundo) {
-        menuAbas.classList.remove('aberto');
-        mascaraFundo.classList.remove('aberto');
-        console.log("Menu fechado com sucesso!");
-    }
+    if (menuAbas) menuAbas.classList.remove('aberto');
+    if (mascaraFundo) mascaraFundo.classList.remove('aberto');
+    console.log("Menu lateral recolhido.");
 }
 
-// NOVA FUNÇÃO: Esconde a seção atual e mostra a selecionada
 function navegarPara(idDaSecao) {
-    // 1. Procura a seção que está aberta no momento e esconde ela
+    // Procura a seção que está aberta e esconde
     const secaoAtual = document.querySelector('.card.secao-ativa');
     if (secaoAtual) {
         secaoAtual.classList.remove('secao-ativa');
     }
 
-    // 2. Encontra a nova seção clicada e mostra ela na tela
+    // Procura a nova seção pelo ID e exibe
     const novaSecao = document.getElementById(idDaSecao);
     if (novaSecao) {
         novaSecao.classList.add('secao-ativa');
+        // Rola a tela para o topo para o usuário ver o início da nova página
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 3. Fecha o menu lateral automaticamente após o clique
+    // Fecha o menu lateral automaticamente
     fecharMenu();
 }
 
-// Aguarda todo o HTML da página ser carregado antes de configurar os cliques
-document.addEventListener('DOMContentLoaded', () => {
-    
-    const btnHamburguer = document.getElementById('btnMenuHamburguer');
-    const menuAbas = document.getElementById('menuAbas');
-    const btnFechar = document.getElementById('btnFecharMenu');
-    const mascaraFundo = document.getElementById('mascaraFundo');
+// 2. DISPARADOR DE CLIQUES SEGURO (Não anula outros scripts como o window.onload do quiz)
+(function() {
+    function inicializarMenu() {
+        const btnHamburguer = document.getElementById('btnMenuHamburguer');
+        const btnFechar = document.getElementById('btnFecharMenu');
+        const mascaraFundo = document.getElementById('mascaraFundo');
 
-    // Função interna para abrir
-    function abrirMenu() {
-        if (menuAbas && mascaraFundo) {
-            menuAbas.classList.add('aberto');
-            mascaraFundo.classList.add('aberto');
-            console.log("Menu aberto com sucesso!");
+        if (btnHamburguer) {
+            btnHamburguer.onclick = function(e) {
+                e.preventDefault();
+                const menu = document.getElementById('menuAbas');
+                const mascara = document.getElementById('mascaraFundo');
+                if (menu) menu.classList.add('aberto');
+                if (mascara) mascara.classList.add('aberto');
+                console.log("Menu lateral expandido!");
+            };
         }
+
+        if (btnFechar) btnFechar.onclick = fecharMenu;
+        if (mascaraFundo) mascaraFundo.onclick = fecharMenu;
     }
 
-    // Ativa os cliques apenas se os elementos existirem na página
-    if (btnHamburguer && menuAbas && btnFechar && mascaraFundo) {
-        btnHamburguer.addEventListener('click', abrirMenu);
-        btnFechar.addEventListener('click', fecharMenu);
-        mascaraFundo.addEventListener('click', fecharMenu);
+    // Executa imediatamente se o HTML já estiver pronto, ou aguarda o carregamento
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', inicializarMenu);
     } else {
-        console.error("Erro: Um ou mais elementos do menu não foram encontrados no HTML.");
+        inicializarMenu();
     }
-});
+})();
