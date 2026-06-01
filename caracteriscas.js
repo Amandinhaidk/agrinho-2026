@@ -57,4 +57,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Erro: Um ou mais elementos do menu não foram encontrados no HTML.");
     }
 });
-

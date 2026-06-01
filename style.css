@@ -58,53 +58,29 @@ p {
     transform: scale(1.05); /* Dá um leve aumento ao passar o mouse */
 }
 /* =======================================================
-   ESTILIZAÇÃO DO SISTEMA DE ABAS EM MENU (SPA)
+   ESTILO DO BOTÃO DE ABRIR O MENU (CONVERTIDO EM FIXO)
    ======================================================= */
 
-/* 1. COMPORTAMENTO DAS PÁGINAS (Esconder/Mostrar) */
-main .card {
-    display: none !important; /* Esconde todas as seções por padrão */
-}
-
-main .card.secao-ativa {
-    display: block !important; /* Exibe apenas a seção selecionada */
-    animation: fadeInPainel 0.4s ease-in-out; /* Transição suave de aparecimento */
-}
-
-@keyframes fadeInPainel {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* 2. BOTÃO DO MENU HAMBÚRGUER (Fixo no canto superior esquerdo) */
 #btnMenuHamburguer {
-    position: fixed !important;
-    top: 15px !important;
-    left: 15px !important;
-    z-index: 2500 !important;
-    background-color: #2e7d32 !important; /* Verde Agrinho */
-    color: #ffffff !important;
+    position: fixed !important; /* Retira o botão do fluxo comum e prende na tela */
+    top: 15px !important;       /* Distância do topo */
+    left: 15px !important;      /* Distância da lateral esquerda */
+    z-index: 3000 !important;   /* Garante que ele fique na frente do fundo azul e dos cards */
+    
+    /* Customização Visual do Botão */
+    background-color: #2e7d32 !important; /* Verde oficial do Agrinho */
+    color: #ffffff !important;            /* Letras brancas */
     padding: 10px 16px !important;
     border: none !important;
     border-radius: 6px !important;
     cursor: pointer !important;
     font-weight: bold !important;
     font-size: 15px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
-    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important; /* Sombra para dar destaque */
+    transition: background-color 0.2s ease !important;
 }
 
+/* Efeito ao passar o mouse por cima */
 #btnMenuHamburguer:hover {
-    background-color: #1b5e20 !important;
-}
-
-/* 3. ESTRUTURA DO PAINEL LATERAL */
-#menuAbas {
-    position: fixed !important;
-    top: 0;
-    left: -320px; /* Esconde o painel totalmente para fora da tela */
-    width: 280px;
-    height: 100vh;
-    background-color: #ffffff !important;
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+    background-color: #1b5e20 !important; /* Verde mais escuro */
 }
