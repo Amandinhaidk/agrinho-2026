@@ -130,3 +130,18 @@ p {
     display: block;
     opacity: 1;
 }
+/* Esconde todas as seções por padrão */
+main .card {
+    display: none;
+}
+
+/* Cria uma classe especial que mostra apenas a seção ativa */
+main .card.secao-ativa {
+    display: block;
+    animation: fadeIn 0.5s ease; /* Um efeito suave de aparecimento */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
