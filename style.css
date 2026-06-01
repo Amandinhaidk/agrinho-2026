@@ -59,52 +59,39 @@ p {
 }
 
 /* =======================================================
-   REVISÃO DO MENU LATERAL (A CAIXA QUE ABRE E FECHA)
+   ESTILO DEFINITIVO DO MENU LATERAL (OCULTO À ESQUERDA)
    ======================================================= */
 
 #menuAbas {
-    position: fixed; /* Prende o menu na tela, independente da rolagem */
+    position: fixed;    /* Prende o menu na tela, isolado do resto do texto */
     top: 0;
-    left: -320px; /* Joga ele totalmente para a esquerda (escondido) */
-    width: 280px; /* Largura do menu lateral */
-    height: 100vh; /* Ocupa do topo até o chão da tela */
+    left: -320px;       /* Joga o menu totalmente para fora da tela na esquerda */
+    width: 280px;       /* Largura da barra lateral */
+    height: 100vh;      /* Ocupa a altura inteira da tela */
     background-color: #ffffff !important; /* Força o fundo a ser branco */
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2); /* Sombra para dar efeito de aba por cima */
-    z-index: 1002; /* Mantém ele na frente de tudo */
-    transition: left 0.3s ease; /* Efeito suave ao deslizar */
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25); /* Sombra marcante */
+    z-index: 2000;      /* Garante que ele fique acima de qualquer texto ou card */
+    transition: left 0.3s ease-in-out; /* Deslizamento suave */
     padding: 20px;
-    box-sizing: border-box; /* Garante que o padding não quebre o tamanho */
+    box-sizing: border-box;
 }
 
-/* Quando o menu ganha a classe 'aberto' pelo JS, ele desliza para a tela */
+/* Quando o JavaScript ativa o menu, ele vem para a posição visível */
 #menuAbas.aberto {
-    left: 0 !important;
+    left: 0 !important; /* Move para o canto esquerdo da tela */
 }
 
-/* Garante que os links fiquem em lista vertical e organizados */
-.menu-links {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0 0;
-    text-align: left; /* Alinha o texto para a esquerda dentro do menu */
-}
-
-.menu-links li {
-    margin-bottom: 12px;
-}
-
-.menu-links a {
-    display: block;
-    color: #333333;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px;
+/* Ajuste para o botão principal de abrir o menu não cobrir o título */
+#btnMenuHamburguer {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+    padding: 10px 15px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
     border-radius: 5px;
-    background-color: #f7f9f7;
-    transition: background 0.2s;
-}
-
-.menu-links a:hover {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+    cursor: pointer;
+    font-weight: bold;
 }
