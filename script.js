@@ -100,6 +100,56 @@ const perguntasQuiz = [
     },
     {
         categoria: "Conhecimento Geral",
+        pergunta: "O nome mate deriva de qual termo e qual era o seu significado original?",
+        opcoes: [
+            "Mati (do quéchua, que significa cabaça/recipiente)",
+            "Matis (do latim, que significa planta amarga)",
+            "Mata (do espanhol, que significa folha)"
+        ],
+        correta: 0
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "Além do chimarrão e do tereré, como a erva-mate também é consumida mundialmente hoje em dia?",
+        opcoes: [
+            "Em cápsulas de café, chás e até em energéticos",
+            "Fermentada como vinho",
+            "Como tempero para carnes"
+        ],
+        correta: 0
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "Que famosa cidade catarinense é conhecida como a Capital Mundial da Erva-Mate?",
+        opcoes: [
+            "Blumenau",
+            "Chapecó",
+            "Canoinhas"
+        ],
+        correta: 2
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "A colheita da erva-mate costuma ser intensificada em qual estação do ano e por quê?",
+        opcoes: [
+            "No verão, para aproveitar o sol forte",
+            "Nos meses mais frios, para garantir a maturação das folhas",
+            "Na primavera, período de floração"
+        ],
+        correta: 1
+    },
+    {
+        categoria: "Conhecimento Geral",
+        pergunta: "O que significa uma erva-mate 'barbaquá'",
+        opcoes: [
+            "Um tipo de erva-mate que passa por um processo tradicional de moagem e defumação.",
+            "Erva-mate cultivada à sombra.",
+            "Uma erva-mate com sabor de canela e especiarias."
+        ],
+        correta: 0
+    },
+    {
+        categoria: "Conhecimento Geral",
         pergunta: "Como se chama a infusão de erva-mate preparada especificamente com água fria ou sumo de fruta, muito popular no Paraguai e no Brasil?",
         opcoes: [
             "Chimarrão",
