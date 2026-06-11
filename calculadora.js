@@ -1,6 +1,9 @@
 function calcularPlantio() {
     const area = parseFloat(document.getElementById('inputArea').value);
     const possuiSombra = document.getElementById('selectSombra').value;
+    // CORREÇÃO: Capturando o nível de sombra do HTML (certifique-se de que o ID existe no seu HTML)
+    const nivelSombra = document.getElementById('selectNivelSombra') ? document.getElementById('selectNivelSombra').value : ""; 
+    
     const tipoRelevo = document.getElementById('selectRelevo').value;
     const tipoSolo = document.getElementById('selectSolo').value;
     const campoResultado = document.getElementById('resultadoCalculo');
@@ -13,16 +16,12 @@ function calcularPlantio() {
         return;
     }
 
-    // 1. CÁLCULO DE MUDAS (Espaçamento 3x1m = 3m² por planta)
-    const metrosPorPlanta = 3; 
+    const metrosPorPlanta = 3.5; 
     const quantidadeMudas = Math.floor(area / metrosPorPlanta);
 
-    // 2. CÁLCULO FINANCEIRO ESTIMADO (Dados médios de produtividade da Embrapa)
-    // Uma árvore adulta produz cerca de 10 kg de folhas por colheita.
     const quilosPorArvore = 10;
     const producaoTotalKg = quantidadeMudas * quilosPorArvore;
     
-    // Considerando o preço médio de mercado de R$ 1,50 por quilo da erva-mate verde entregue na indústria
     const precoPorKg = 1.50; 
     const faturamentoEstimado = producaoTotalKg * precoPorKg;
 
@@ -30,18 +29,32 @@ function calcularPlantio() {
     let corFundo = "#e8f5e9"; 
     let corBorda = "#2e7d32";
 
-    // 3. ANÁLISE DE SOMBREAMENTO
-    if (possuiSombra === "sim") {
-        mensagemViabilidade = `<h3>✅ Condição de Luz: Excelente para Sistema Sombreado!</h3>
-            <p>Ambiente perfeito. O mate sombreado reduz o estresse térmico da planta, preserva a umidade e gera folhas de maior valor comercial.</p>`;
-    } else {
-        mensagemViabilidade = `<h3>⚠️ Condição de Luz: Requer Cuidados (Pleno Sol)</h3>
-            <p>O cultivo em pleno sol acelera o crescimento inicial, mas exige atenção redobrada com a desidratação do solo e adubação orgânica frequente.</p>`;
-        corFundo = "#fff3e0"; 
+    // CORREÇÃO: Estrutura if/else corrigida e identada corretamente
+    if (possuiSombra === "não") {
+        mensagemViabilidade = `<h3>☀️ Condição de Luz: Pleno Sol</h3>
+            <p>O cultivo em pleno sol acelera o crescimento inicial, mas exige atenção redobrada com a desidratação do solo e adubação orgânica frequente</p>`;
+        corFundo = "#fff3e0";
         corBorda = "#e65100";
+    } else {
+        // Se possui sombra, avalia o nível
+        if (nivelSombra === "muita") {
+            mensagemViabilidade = `<h3>🌳 Condição de Luz: Muita Sombra (Mata Fechada)</h3>
+                <p>O ambiente protege 100% o ecossistema, porém, sombra excessiva pode diminuir o ritmo de crescimento e a produtividade das folhas <strong>Recomendação:</strong> Avalie fazer uma poda leve de condução nos galhos das árvores mais altas para deixar um pouco de luz filtrada entrar.</p>`;
+            corFundo = "#e8f5e9"; 
+            corBorda = "#1b5e20";
+        } else if (nivelSombra === "média") {
+            mensagemViabilidade = `<h3>✅ Condição de Luz: Sombra Média (O Cenário Ideal!)</h3>
+                <p>Este é o melhor cenário do <strong> Sistema Erva 20 e manejo sustentável</strong>! A luz filtrada na medida certa garante folhas com um tom verde-escuro intenso, com menor amargor, alta qualidade comercial e crescimento equilibrado</p>`;
+            corFundo = "#e8f5e9"; 
+            corBorda = "#2e7d32";
+        } else if (nivelSombra === "pouca") {
+            mensagemViabilidade = `<h3>🌱 Condição de Luz: Pouca Sombra (Sombra Rala)</h3>
+                <p>A proteção ambiental existe, mas é baixa. As plantas receberão bastante sol direto em alguns períodos do dia. Recomenda-se enriquecer a área futuramente com o plantio de mais Araucárias ou mudas nativas nas falhas do terreno.</p>`;
+            corFundo = "#e8f5e9"; 
+            corBorda = "#0366d6";
+        }
     }
 
-    // 4. ANÁLISE DO RELEVO
     let dicasRelevo = "";
     if (tipoRelevo === "plano") {
         dicasRelevo = `<strong>Topografia Plana:</strong> Baixo risco de erosão. Excelente viabilidade para o uso de ferramentas elétricas ou podadeiras mecânicas. Cuidado apenas para não acumular água na base.`;
@@ -49,7 +62,6 @@ function calcularPlantio() {
         dicasRelevo = `<strong>Topografia em Declive (Morro):</strong> Alto risco de perda de nutrientes em temporais. <strong>O plantio DEVE ser feito em Curvas de Nível</strong> (linhas horizontais) e o solo precisa ficar sempre coberto de palhada para evitar a erosão.`;
     }
 
-    // 5. ANÁLISE DO SOLO
     let dicasSolo = "";
     if (tipoSolo === "argiloso") {
         dicasSolo = `<strong>Solo Argiloso (Terra Roxa):</strong> Muito fértil e ótimo para reter umidade. Cuide para não compactar a terra usando tratores pesados em dias de chuva.`;
@@ -61,7 +73,6 @@ function calcularPlantio() {
         corBorda = "#d32f2f";
     }
 
-    // Montando a resposta completa na tela
     campoResultado.innerHTML = `
         <div class="destaque" style="background-color: ${corFundo}; border-left-color: ${corBorda}; text-align: left; transition: all 0.3s ease;">
             ${mensagemViabilidade}
@@ -72,7 +83,7 @@ function calcularPlantio() {
             <p>Para a sua área de <strong>${area} m²</strong>, adotando as diretrizes técnicas:</p>
             <ul style="margin-left: 20px; margin-top: 5px; line-height: 1.6;">
                 <li><strong>Mudas estimadas:</strong> Cerca de <strong>${quantidadeMudas} plantas</strong>.</li>
-                <li><strong>Espaçamento ideal:</strong> 3 metros entre fileiras e 1 metro entre plantas.</li>
+                <li><strong>Espaçamento ideal:</strong> 3,5 metros entre fileiras e 1,5 metro entre plantas.</li>
             </ul>
 
             <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
