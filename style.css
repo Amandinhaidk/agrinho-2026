@@ -1,24 +1,22 @@
-/* 1. RESET: Remove estilos de fábrica do navegador */
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 2. CORPO DO SITE CORRIGIDO */
+
 body {
     background-color: #a4c1ee;
     color: #333;
     min-height: 100vh;
-    padding: 60px 20px 20px 20px; /* Espaço no topo para o botão não cobrir nada */
+    padding: 60px 20px 20px 20px; 
 }
 
-/* 3. CONTAINERS E CARDS PRINCIPAIS AJUSTADOS */
 .container {
     width: 100%;
-    max-width: 900px; /* Aumentado para o texto respirar e ficar elegante */
-    margin: 0 auto 20px auto; /* Centraliza na tela sem esmagar */
+    max-width: 900px; 
+    margin: 0 auto 20px auto; 
 }
 
 main .card {
@@ -28,12 +26,10 @@ main .card {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     width: 100%;
-    
-    /* COMPORTAMENTO SPA: Esconde as seções por padrão */
+
     display: none; 
 }
 
-/* Exibe apenas a seção que o JavaScript ativar */
 main .card.secao-ativa {
     display: block !important;
     animation: fadeInSuave 0.4s ease-in-out;
@@ -44,7 +40,6 @@ main .card.secao-ativa {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Subcards internos das seções */
 .subtopicos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -61,7 +56,6 @@ main .card.secao-ativa {
     text-align: left;
 }
 
-/* 4. TIPOGRAFIA */
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -96,7 +90,6 @@ p {
     line-height: 1.6;
 }
 
-/* 5. BOTÕES DO PROJETO */
 .botao, #btnIniciarQuiz {
     display: inline-block;
     background-color: #1a73e8;
@@ -114,10 +107,6 @@ p {
     background-color: #1557b0;
     transform: scale(1.03);
 }
-
-/* =======================================================
-   6. CONTROLES DO MENU HAMBÚRGUER E ABAS (FIXOS)
-   ======================================================= */
 
 #btnMenuHamburguer {
     position: fixed !important;
@@ -141,26 +130,24 @@ p {
     background-color: #1b5e20 !important;
 }
 
-/* Estrutura da gaveta do menu lateral */
 #menuAbas {
     position: fixed !important;
     top: 0;
-    left: -320px; /* Guardado fora da tela na esquerda */
+    left: -320px; 
     width: 280px;
     height: 100vh;
     background-color: #ffffff !important;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
-    z-index: 5000 !important; /* Fica por cima de tudo ao abrir */
+    z-index: 5000 !important; 
     transition: left 0.3s ease-in-out;
     padding: 25px;
     box-sizing: border-box;
 }
 
 #menuAbas.aberto {
-    left: 0 !important; /* Desliza para dentro da tela */
+    left: 0 !important; 
 }
 
-/* Máscara de Fundo */
 #mascaraFundo {
     display: none;
     position: fixed;
@@ -176,7 +163,7 @@ p {
     display: block !important;
 }
 
-/* Estilos internos do Menu */
+
 .menu-header {
     display: flex;
     justify-content: space-between;
@@ -241,7 +228,6 @@ p {
     padding-top: 10px;
 }
 
-/* 7. GRID DE IMAGENS DA GALERIA */
 .galeria-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

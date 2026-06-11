@@ -1,7 +1,3 @@
-// =======================================================
-// RECURSO: BANCO DE DADOS E MOTOR DO QUIZ INTERATIVO
-// =======================================================
-
 const perguntasQuiz = [
     // --- CATEGORIA: SOBRE O PROJETO ---
     {
@@ -162,8 +158,7 @@ const perguntasQuiz = [
 
 let indicePerguntaAtual = 0;
 let pontuacao = 0;
-let respondido = false; // Evita que o usuário clique em múltiplos botões na mesma pergunta
-
+let respondido = false; 
 function renderizarPergunta() {
     const container = document.getElementById('quizContainer');
     if (!container) return;
@@ -178,7 +173,6 @@ function renderizarPergunta() {
 
     const dadosAtuais = perguntasQuiz[indicePerguntaAtual];
 
-    // Selo de Categoria Dinâmico e Corrigido
     const tagCategoria = document.createElement('span');
     tagCategoria.textContent = dadosAtuais.categoria;
     tagCategoria.style.display = 'inline-block';
@@ -195,8 +189,8 @@ function renderizarPergunta() {
         tagCategoria.style.backgroundColor = '#f3e5f5';
         tagCategoria.style.color = '#4a148c';
     } else {
-        tagCategoria.style.backgroundColor = '#e8f5e9'; // Verde Claro Verdadeiro
-        tagCategoria.style.color = '#1b5e20';           // Verde Escuro Verdadeiro
+        tagCategoria.style.backgroundColor = '#e8f5e9'; 
+        tagCategoria.style.color = '#1b5e20';           
     }
     container.appendChild(tagCategoria);
 
@@ -243,22 +237,20 @@ function verificarResposta(indiceSelecionado, botaoClicado) {
 
     if (indiceSelecionado === respostaCorreta) {
         pontuacao++;
-        botaoClicado.style.backgroundColor = '#c8e6c9'; // Verde feedback acerto
+        botaoClicado.style.backgroundColor = '#c8e6c9'; 
         botaoClicado.style.borderColor = '#388e3c';
         botaoClicado.style.color = '#1b5e20';
         botaoClicado.innerHTML += ' 🎉';
     } else {
-        botaoClicado.style.backgroundColor = '#ffcdd2'; // Vermelho feedback erro
+        botaoClicado.style.backgroundColor = '#ffcdd2';
         botaoClicado.style.borderColor = '#d32f2f';
         botaoClicado.style.color = '#c62828';
         botaoClicado.innerHTML += ' ❌';
 
-        // Mostra o botão correto de forma sutil para o aluno aprender
         botoes[respostaCorreta].style.backgroundColor = '#c8e6c9';
         botoes[respostaCorreta].style.borderColor = '#388e3c';
     }
 
-    // Aguarda 1.5 segundo com os feedbacks na tela e passa para a próxima de forma suave
     setTimeout(() => {
         indicePerguntaAtual++;
         renderizarPergunta();
@@ -281,7 +273,7 @@ function exibirResultadoFinal() {
 
     const btnReiniciar = document.createElement('button');
     btnReiniciar.textContent = 'Jogar Novamente 🔄';
-    btnReiniciar.className = 'botao'; // Usa a classe padrão que configuramos no CSS
+    btnReiniciar.className = 'botao';
     btnReiniciar.style.marginTop = '15px';
     
     btnReiniciar.onclick = function() {
@@ -290,7 +282,7 @@ function exibirResultadoFinal() {
 
     container.appendChild(tituloFim);
     container.appendChild(textoPontos);
-    container.appendChild(btnReiniciar);
+    container.appendChild(btnReDadosDiagnosticoDtoiniciar);
 }
 
 function reiniciarQuiz() {
@@ -299,7 +291,6 @@ function reiniciarQuiz() {
     renderizarPergunta();
 }
 
-// Inicialização segura
 document.addEventListener('DOMContentLoaded', () => {
     const btnIniciar = document.getElementById('btnIniciarQuiz');
     if (btnIniciar) {

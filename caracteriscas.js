@@ -1,8 +1,3 @@
-// =======================================================
-// RECURSO: CONFIGURAÇÃO DE NAVEGAÇÃO E MENU LATERAL (SPA)
-// =======================================================
-
-// 1. FUNÇÕES GLOBAIS (Ficam de fora para o HTML conseguir chamar no 'onclick')
 
 function fecharMenu() {
     const menuAbas = document.getElementById('menuAbas');
@@ -13,25 +8,20 @@ function fecharMenu() {
 }
 
 function navegarPara(idDaSecao) {
-    // Procura a seção que está aberta e esconde
     const secaoAtual = document.querySelector('.card.secao-ativa');
     if (secaoAtual) {
         secaoAtual.classList.remove('secao-ativa');
     }
 
-    // Procura a nova seção pelo ID e exibe
     const novaSecao = document.getElementById(idDaSecao);
     if (novaSecao) {
         novaSecao.classList.add('secao-ativa');
-        // Rola a tela para o topo para o usuário ver o início da nova página
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Fecha o menu lateral automaticamente
     fecharMenu();
 }
 
-// 2. DISPARADOR DE CLIQUES SEGURO (Não anula outros scripts como o window.onload do quiz)
 (function() {
     function inicializarMenu() {
         const btnHamburguer = document.getElementById('btnMenuHamburguer');
@@ -53,7 +43,6 @@ function navegarPara(idDaSecao) {
         if (mascaraFundo) mascaraFundo.onclick = fecharMenu;
     }
 
-    // Executa imediatamente se o HTML já estiver pronto, ou aguarda o carregamento
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', inicializarMenu);
     } else {
