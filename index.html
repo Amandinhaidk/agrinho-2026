@@ -26,6 +26,7 @@
                 <li><a href="#" onclick="navegarPara('curiosidades')">💡 Curiosidades e Receitas</a></li>
                 <li><a href="#" onclick="navegarPara('galeria')">📸 Galeria do Projeto</a></li>
                 <li><a href="#" onclick="navegarPara('quiz')">🎮 Quiz Interativo</a></li>
+                <li><a href="#" onclick="navegarPara('calculadoraPlante')">🧮 Simulador de Plantio</a>
             </ul>
         </nav>
 
@@ -281,6 +282,26 @@
             </div>
         </section>
 
+        <section id="calculadoraPlante" class="card">
+    <h2>🧮 Simulador de Espaçamento e Viabilidade</h2>
+    <p class="intro-secao">Insira os dados do seu terreno abaixo para descobrir a capacidade de mudas e se a área atende aos critérios sustentáveis de plantio sombreado.</p>
+
+    <div class="destaque" style="background-color: #f1f8ff; border-left-color: #0366d6; text-align: left;">
+        <label for="inputArea" style="display:block; font-weight:bold; margin-bottom: 5px;">Área total do terreno (em metros quadrados - m²):</label>
+        <input type="number" id="inputArea" placeholder="Ex: 5000" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; font-size: 16px;">
+
+        <label for="selectSombra" style="display:block; font-weight:bold; margin-bottom: 5px;">O terreno possui cobertura de árvores nativas/Araucárias?</label>
+        <select id="selectSombra" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px; font-size: 16px;">
+            <option value="sim">Sim, possui boa cobertura de sombra (Ideal)</option>
+            <option value="nao">Não, é uma área de pleno sol</option>
+        </select>
+
+        <button onclick="calcularPlantio()" style="background-color: #2e7d32; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%;">Simular Viabilidade</button>
+    </div>
+
+    <div id="resultadoCalculo" style="margin-top: 20px;"></div>
+</section>
+
     </main>
 
     <footer>
@@ -289,6 +310,7 @@
 
     <script src="script.js" defer></script>
     <script src="caracteriscas.js" defer></script>
+    <script src="calculadora.js" defer></script>
 
 </body>
 </html>
