@@ -48,7 +48,7 @@ function calcularPlantio() {
             corFundo = "#e8f5e9"; 
             corBorda = "#2e7d32";
         } else if (nivelSombra === "pouca") {
-            mensagemViabilidade = `<h3>🌱 Condição de Luz: Pouca Sombra (Sombra Rala)</h3>
+            mensagemViabilidade = `<h3>🌱 Condição de Luz: Pouca Sombra (Sombra Rala.)</h3>
                 <p>A proteção ambiental existe, mas é baixa. As plantas receberão bastante sol direto em alguns períodos do dia. Recomenda-se enriquecer a área futuramente com o plantio de mais Araucárias ou mudas nativas nas falhas do terreno.</p>`;
             corFundo = "#e8f5e9"; 
             corBorda = "#0366d6";
