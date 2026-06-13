@@ -1,7 +1,19 @@
+function controlarCamposSombra() {
+        const possuiSombra = document.getElementById('selectSombra').value;
+            const containerNivel = document.getElementById('containerNivelSombra');
+                
+                        if (containerNivel) {
+                                if (possuiSombra === "sim") {
+                                            containerNivel.style.display = "block"; 
+                                                    } else {
+                                                                containerNivel.style.display = "none";  
+                                                                        }
+                                                                            }
+}
+
 function calcularPlantio() {
     const area = parseFloat(document.getElementById('inputArea').value);
     const possuiSombra = document.getElementById('selectSombra').value;
-    // CORREÇÃO: Capturando o nível de sombra do HTML (certifique-se de que o ID existe no seu HTML)
     const nivelSombra = document.getElementById('selectNivelSombra') ? document.getElementById('selectNivelSombra').value : ""; 
     
     const tipoRelevo = document.getElementById('selectRelevo').value;
@@ -29,14 +41,12 @@ function calcularPlantio() {
     let corFundo = "#e8f5e9"; 
     let corBorda = "#2e7d32";
 
-    // CORREÇÃO: Estrutura if/else corrigida e identada corretamente
     if (possuiSombra === "não") {
         mensagemViabilidade = `<h3>☀️ Condição de Luz: Pleno Sol</h3>
             <p>O cultivo em pleno sol acelera o crescimento inicial, mas exige atenção redobrada com a desidratação do solo e adubação orgânica frequente</p>`;
         corFundo = "#fff3e0";
         corBorda = "#e65100";
-    } else {
-        // Se possui sombra, avalia o nível
+    } else {11
         if (nivelSombra === "muita") {
             mensagemViabilidade = `<h3>🌳 Condição de Luz: Muita Sombra (Mata Fechada)</h3>
                 <p>O ambiente protege 100% o ecossistema, porém, sombra excessiva pode diminuir o ritmo de crescimento e a produtividade das folhas <strong>Recomendação:</strong> Avalie fazer uma poda leve de condução nos galhos das árvores mais altas para deixar um pouco de luz filtrada entrar.</p>`;
